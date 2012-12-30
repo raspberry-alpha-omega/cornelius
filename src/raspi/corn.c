@@ -68,19 +68,21 @@ int streq(const char* a, const char* b) {
 	if (0 == a || 0 == b) return 0;
 	for (;;) {
 		if (*a != *b) return 0;
-		if (0 == *a) return 1;
+		if (0 == *a) break;
+		++a;
+		++b;
 	}
 
 	// should never get here
-	return 0;
+	return 1;
 }
 
 doorid_t dlookup(const char* dname) {
-//	for (int i = 0; i < ndoors; ++i) {
-//		if (streq(dname, doors[i].name)) return i;
-//	}
-//	return DOOR_ERROR;
-	return 0;
+	for (int i = 0; i < ndoors; ++i) {
+		if (streq(dname, doors[i].name)) return i;
+	}
+	return DOOR_ERROR;
+//	return 0;
 }
 
 void dreset(doorid_t id) {
