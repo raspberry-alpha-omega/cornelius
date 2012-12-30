@@ -17,10 +17,9 @@ typedef uint16_t doorid_t;
 #define DOOR_ERROR 65535
 
 doorid_t dlookup(const char* dname);
-void dreset(doorid_t door);
 extern struct Crate* dopen(doorid_t id);
 extern void dclose(doorid_t id);
 
-void wait(int usec);
+void yield();
 
 #endif
