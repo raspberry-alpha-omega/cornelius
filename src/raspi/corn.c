@@ -93,8 +93,10 @@ extern struct Crate* dopen(doorid_t id) {
 
 extern void dclose(doorid_t id) {
 	struct Door* door = &doors[id];
-	door->action(id, door->size, door->a);
+
 	struct Crate* t = door->a;
 	door->a = door->b;
-	door->b = door->a;
+	door->b = t;
+
+	door->action(id, door->size, door->b);
 }
