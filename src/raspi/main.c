@@ -7,7 +7,7 @@ void not_main(void) {
 	doorid_t timer = dlookup("RasPi/TIMER");
 	if (DOOR_ERROR == led || DOOR_ERROR == timer) return;
 
-	int pause = 2000000;
+	int pause = 1000000;
 
 	for (;;) {
 		crate = dopen(led);

@@ -33,6 +33,4 @@
 extern void PUT32 ( unsigned int, unsigned int );
 extern unsigned int GET32 ( unsigned int );
 
-void _wait(int usec);
-
 #endif
