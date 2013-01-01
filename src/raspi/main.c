@@ -1,7 +1,34 @@
 #include <stdint.h>
 #include "corn.h"
 
+struct FBDescription {
+	int width;
+	int height;
+	int vwidth;
+	int vheight;
+	int pitch;
+	int bitdepth;
+	int x;
+	int y;
+	int gpointer;
+	int gsize;
+};
+
+//extern struct FBDescription* InitialiseFrameBuffer(uint32_t width, uint32_t height, uint32_t bitDepth);
+//void SetGraphicsAddress(struct FBDescription* fbd);
+//extern uint64_t DrawString(char* string, uint32_t length, uint32_t x, uint32_t y);
+//
+//extern void SetForeColour(uint16_t colour);
+//extern void DrawPixel(uint32_t x, uint32_t y);
+//extern void DrawLine(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
+
 void not_main(void) {
+//	struct FBDescription* fbd = InitialiseFrameBuffer(1024, 768, 16);
+//	SetGraphicsAddress(fbd);
+//	DrawString("Hello, World", 12, 0, 0);
+//	SetForeColour(5555);
+//	DrawLine(0,0,1000,1000);
+
 	struct Crate* crate;
 	doorid_t led = dlookup("RasPi/OKLED");
 	doorid_t timer = dlookup("RasPi/TIMER");
