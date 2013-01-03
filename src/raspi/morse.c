@@ -41,7 +41,7 @@ struct Morse { char letter; const char* symbol; } code[] = {
 };
 static int nchars = sizeof(code) / sizeof (struct Morse);
 
-#define dot_pause 500000
+#define dot_pause 300000
 #define dash_pause (dot_pause * 3)
 #define gap_pause dot_pause
 #define letter_pause (dot_pause * 3)
@@ -80,7 +80,7 @@ void morse_glyph(char c) {
 		switch_on(led, dash_pause);
 		break;
 	default:
-		wait(space_pause);
+		wait(word_pause);
 		break;
 	}
 
