@@ -38,7 +38,7 @@ uint32_t MailboxRead(uint8_t channel) {
 	return ret & 0xFFFFFFF0;
 }
 
-struct FrameBufferInfo fbinfo = {
+struct FrameBufferInfo fbinfo __attribute__ ((aligned(16))) = {
 		/* int width */ 1024,
 		/* int height */ 768,
 		/* int vwidth */ 1024,
