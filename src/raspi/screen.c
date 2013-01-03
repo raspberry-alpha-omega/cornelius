@@ -40,7 +40,7 @@ uint32_t MailboxRead(uint8_t channel) {
 	return ret & 0xFFFFFFF0;
 }
 
-struct FrameBufferInfo fbinfo __attribute__ ((aligned(16))) = {
+volatile struct FrameBufferInfo fbinfo __attribute__ ((aligned(16))) = {
 		/* int width */ 1024,
 		/* int height */ 768,
 		/* int vwidth */ 1024,
@@ -49,8 +49,8 @@ struct FrameBufferInfo fbinfo __attribute__ ((aligned(16))) = {
 		/* int depth */ 16,
 		/* int x */ 0,
 		/* int y */ 0,
-		/* int gpu_p */ 0,
-		/* int gpu_size */ 0
+		/* int buffer_p */ 0,
+		/* int buffer_size */ 0
 };
 
 #define CHANNEL 1
@@ -66,8 +66,8 @@ struct FrameBufferInfo* InitialiseFrameBuffer(uint32_t width, uint32_t height, u
 	uint32_t ret = MailboxRead(CHANNEL);
 	if (0 == ret) return 0;
 
-	while (fbinfo.pitch == 0)
+	while (fbinfo.buffer_p == 0)
 		;
 
-	return &fbinfo;
+	return (struct FrameBufferInfo*)&fbinfo;
 }

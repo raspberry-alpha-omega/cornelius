@@ -22,15 +22,14 @@
 #define TEST_BITS(data, mask)	(((data)&(mask)) != 0)
 #define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 
-#define READ32(addr) (*(VUINT32*)(addr))
-#define READ16(addr) (*(VUINT16*)(addr))
-#define READ8(addr) (*(VUINT8*)(addr))
+extern void PUT32(uint32_t p, uint32_t value);
+extern void PUT16(uint32_t p, uint16_t value);
+extern void PUT8(uint32_t p, uint8_t value);
+extern unsigned int GET32(uint32_t p);
+extern unsigned int GET16(uint32_t p);
+extern unsigned int GET8(uint32_t p);
 
-#define WRITE32(addr,value) (*(VUINT32*)(addr) = (VUINT32)(value))
-#define WRITE16(addr,value) (*(VUINT16*)(addr) = (VUINT16)(value))
-#define WRITE8(addr,value) (*(VUINT8*)(addr) = (VUINT8)(value))
-
-extern void PUT32 ( unsigned int, unsigned int );
-extern unsigned int GET32 ( unsigned int );
+#define SECOND 1000000
+#define MINUTE (60 * SECOND)
 
 #endif
