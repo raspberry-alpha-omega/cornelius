@@ -64,10 +64,10 @@ struct FrameBufferInfo* InitialiseFrameBuffer(uint32_t width, uint32_t height, u
 
 	MailboxWrite((uint32_t)&fbinfo, CHANNEL);
 	uint32_t ret = MailboxRead(CHANNEL);
-//	if (0 == ret) return 0;
+	if (0 == ret) return 0;
 
-//	while (fbinfo.pitch == 0)
-//		;
+	while (fbinfo.pitch == 0)
+		;
 
 	return &fbinfo;
 }
