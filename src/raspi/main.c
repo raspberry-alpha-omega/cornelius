@@ -16,7 +16,7 @@ void not_main(void) {
 
 	if (DOOR_ERROR == led || DOOR_ERROR == timer) return;
 
-	//	struct FrameBufferInfo* fbinfo = InitialiseFrameBuffer(1024, 768, 16);
+	struct FrameBufferInfo* fbinfo = InitialiseFrameBuffer(1024, 768, 16);
 
 	int pause = 1000000;
 

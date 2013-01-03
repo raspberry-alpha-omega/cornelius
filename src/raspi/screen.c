@@ -24,6 +24,8 @@ void MailboxWrite(uint32_t value, uint8_t channel) {
 }
 
 uint32_t MailboxRead(uint8_t channel) {
+	channel &= 0x0F;
+
 	uint32_t status;
 	uint32_t ret;
 
@@ -33,7 +35,7 @@ uint32_t MailboxRead(uint8_t channel) {
 		} while (status & 0x40000000);
 
 		ret = GET32(Mailbox_READ_REGISTER);
-	} while ((channel & 0x0F) == (ret & 0x0F));
+	} while (channel != (ret & 0x0F));
 
 	return ret & 0xFFFFFFF0;
 }
@@ -62,10 +64,10 @@ struct FrameBufferInfo* InitialiseFrameBuffer(uint32_t width, uint32_t height, u
 
 	MailboxWrite((uint32_t)&fbinfo, CHANNEL);
 	uint32_t ret = MailboxRead(CHANNEL);
-	if (0 == ret) return 0;
+//	if (0 == ret) return 0;
 
-	while (fbinfo.pitch == 0)
-		;
+//	while (fbinfo.pitch == 0)
+//		;
 
 	return &fbinfo;
 }
