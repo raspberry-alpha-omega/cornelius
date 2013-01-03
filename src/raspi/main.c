@@ -1,5 +1,7 @@
 #include <stdint.h>
+
 #include "corn.h"
+#include "screen.h"
 
 void not_main(void) {
 
