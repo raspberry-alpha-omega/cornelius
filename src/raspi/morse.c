@@ -43,9 +43,9 @@ static int nchars = sizeof(code) / sizeof (struct Morse);
 
 #define dot_pause 500000
 #define dash_pause (dot_pause * 3)
-#define gap_pause 500000
-#define letter_pause (gap_pause * 3)
-#define space_pause (gap_pause * 6)
+#define gap_pause dot_pause
+#define letter_pause (dot_pause * 3)
+#define word_pause (gap_pause * 7)
 
 void wait(int pause) {
 	doorid_t timer = dlookup("RasPi/TIMER");
