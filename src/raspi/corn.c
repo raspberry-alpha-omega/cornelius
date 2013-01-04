@@ -24,12 +24,13 @@ extern struct Door doors[];
 
 #define OKLED (1<<16)
 void raspi_okled_action(doorid_t id, uint16_t size, struct Crate* crate) {
-	if (crate->data[0] == 0) {
+	if (crate->data[0] == 1) {
 		PUT32(GPCLR0, OKLED);
 	} else {
 		PUT32(GPSET0, OKLED);
 	}
 }
+
 void raspi_okled_reset(doorid_t id) {
 	doors[id].status = DOOR_STATUS_BUSY;
 	uint32_t sel = GET32(GPFSEL1);

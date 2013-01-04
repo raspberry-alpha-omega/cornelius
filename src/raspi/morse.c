@@ -56,7 +56,7 @@ void wait(int pause) {
 
 void switch_off(doorid_t led, int duration) {
 	struct Crate* crate = dopen(led);
-	crate->data[0] = 1;
+	crate->data[0] = 0;
 	dclose(led);
 
 	wait(duration);
@@ -64,7 +64,7 @@ void switch_off(doorid_t led, int duration) {
 
 void switch_on(doorid_t led, int duration) {
 	struct Crate* crate = dopen(led);
-	crate->data[0] = 0;
+	crate->data[0] = 1;
 	dclose(led);
 
 	wait(duration);

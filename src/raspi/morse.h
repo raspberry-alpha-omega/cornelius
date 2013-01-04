@@ -13,4 +13,6 @@ void morse_dots(int ndots);
 void morse_char(char c);
 void morse_string(const char* message);
 
+void halt(const char* message);
+
 #endif
