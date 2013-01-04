@@ -6,13 +6,13 @@
 
 #include "screen.h"
 
-#define MailboxBase 0x2000B880
-#define Mailbox_READ_REGISTER MailboxBase + 0x00
-#define Mailbox_POLL_REGISTER MailboxBase + 0x10
-#define Mailbox_SENDER_REGISTER MailboxBase + 0x14
-#define Mailbox_STATUS_REGISTER MailboxBase + 0x18
-#define Mailbox_CONFIG_REGISTER MailboxBase + 0x1C
-#define Mailbox_WRITE_REGISTER MailboxBase + 0x20
+//#define MailboxBase 0x2000B880
+//#define Mailbox_READ_REGISTER MailboxBase + 0x00
+//#define Mailbox_POLL_REGISTER MailboxBase + 0x10
+//#define Mailbox_SENDER_REGISTER MailboxBase + 0x14
+//#define Mailbox_STATUS_REGISTER MailboxBase + 0x18
+//#define Mailbox_CONFIG_REGISTER MailboxBase + 0x1C
+//#define Mailbox_WRITE_REGISTER MailboxBase + 0x20
 
 /* Framebuffer initialisation failure codes
  * If the FB can't be initialised, one of the following numbers will be
@@ -52,10 +52,8 @@ static unsigned int max_x, max_y;
 /* Framebuffer initialisation failed. Can't display an error, so flashing
  * the OK LED will have to do
  */
-static void fb_fail(unsigned int num)
-{
-	while(1)
-		morse_dots(num);
+static void fb_fail(unsigned int num) {
+	while(1) morse_dots(num);
 }
 
 
@@ -193,6 +191,14 @@ void fb_init(void) {
 //	console_write(todec(fb_y, 0));
 //	console_write(COLOUR_POP "\n");
 }
+
+extern void clear_screen(int hue) {
+	int screensize = fb_x * fb_y * 2;
+	for (int i = 0; i < screensize; ++i) {
+		PUT16(screenbase + i, hue);
+	}
+}
+
 //
 //
 //void MailboxWrite(uint32_t value, uint8_t channel) {

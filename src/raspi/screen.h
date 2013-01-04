@@ -19,5 +19,6 @@
 //struct FrameBufferInfo* InitialiseFrameBuffer(uint32_t width, uint32_t height, uint32_t bitDepth);
 
 extern void fb_init(void);
+extern void clear_screen(int hue);
 
 #endif
