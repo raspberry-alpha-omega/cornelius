@@ -29,6 +29,8 @@ extern unsigned int GET32(uint32_t p);
 extern unsigned int GET16(uint32_t p);
 extern unsigned int GET8(uint32_t p);
 
+#define USECOND 1
+#define MSECOND 1000
 #define SECOND 1000000
 #define MINUTE (60 * SECOND)
 

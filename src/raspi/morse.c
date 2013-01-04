@@ -87,6 +87,14 @@ void morse_glyph(char c) {
 	switch_off(led, gap_pause);
 }
 
+void morse_dots(int ndots) {
+	for (int i = 0; i < ndots; ++i) {
+		morse_glyph('.');
+	}
+
+	wait(letter_pause);
+}
+
 void morse_symbol(const char* symbol) {
 	struct Crate* crate;
 
@@ -96,6 +104,7 @@ void morse_symbol(const char* symbol) {
 
 	wait(letter_pause);
 }
+
 
 void morse_char(char c) {
 	for (int i = 0; i < nchars; ++i) {
