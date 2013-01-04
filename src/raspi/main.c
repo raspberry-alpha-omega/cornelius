@@ -67,6 +67,6 @@ void not_main(void) {
 //		complain("k");
 //	}
 
-	clear_screen(RED);
+	clear_screen(GREEN);
 	complain("a");
 }
