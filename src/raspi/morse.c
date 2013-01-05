@@ -120,3 +120,9 @@ void morse_string(const char* message) {
 		morse_char(c);
 	}
 }
+
+void halt(const char* message) {
+	for (;;) {
+		morse_string(message);
+	}
+}
